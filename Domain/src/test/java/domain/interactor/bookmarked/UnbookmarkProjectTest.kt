@@ -4,7 +4,6 @@ import com.example.domain.executor.PostExecutionThread
 import com.example.domain.interactor.bookmarked.UnbookmarkProject
 import com.example.domain.repository.ProjectRepository
 import domain.testdata.TestDataFactory
-import domain.testdata.TestDataFactory.stubBookmarkedProject
 import domain.testdata.TestDataFactory.stubUnBookmarkedProject
 import io.reactivex.Completable
 import org.junit.Before
