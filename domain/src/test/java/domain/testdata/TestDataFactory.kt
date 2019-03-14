@@ -50,4 +50,8 @@ object TestDataFactory {
     fun stubBookmarkedProject(completable: Completable, projectRepository: ProjectRepository){
         whenever(projectRepository.bookmarkProject(any())).thenReturn(completable)
     }
+
+    fun stubUnBookmarkedProject(completable: Completable, projectRepository: ProjectRepository){
+        whenever(projectRepository.unbookmarkProject(any())).thenReturn(completable)
+    }
 }
