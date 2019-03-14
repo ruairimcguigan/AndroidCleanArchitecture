@@ -1,11 +1,12 @@
-package domain.interactor
+package domain.interactor.fetch
 
 import com.example.domain.executor.PostExecutionThread
-import com.example.domain.interactor.browse.FetchProjects
+import com.example.domain.interactor.fetch.FetchProjects
 import com.example.domain.model.Project
 import com.example.domain.repository.ProjectRepository
 import com.nhaarman.mockitokotlin2.whenever
 import domain.testdata.TestDataFactory
+import domain.testdata.TestDataFactory.stubFetchProjects
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
@@ -28,7 +29,7 @@ class FetchProjectsTest {
     @Test
     fun `test fetchProjects completes successfully`() {
         // given
-        stubFetchProjects(Observable.just(TestDataFactory.makeProjectList(2)))
+        stubFetchProjects(Observable.just(TestDataFactory.makeProjectList(2)), projectRepository)
 
         // when
         val testObserver = fetchProjects.buildUseCaseObservable().test()
@@ -41,16 +42,12 @@ class FetchProjectsTest {
     fun `test fetchProjects returns data`() {
         // given
         val projectList = TestDataFactory.makeProjectList(2)
-        stubFetchProjects(Observable.just(projectList))
+        stubFetchProjects(Observable.just(projectList), projectRepository)
 
         // when
         val testObserver = fetchProjects.buildUseCaseObservable().test()
 
         // then
         testObserver.assertValue(projectList)
-    }
-
-    private fun stubFetchProjects(observable: Observable<List<Project>>){
-        whenever(projectRepository.getProjects()).thenReturn(observable)
     }
 }

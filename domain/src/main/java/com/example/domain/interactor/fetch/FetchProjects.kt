@@ -1,4 +1,4 @@
-package com.example.domain.interactor.browse
+package com.example.domain.interactor.fetch
 
 import com.example.domain.executor.PostExecutionThread
 import com.example.domain.interactor.ObservableUseCase
