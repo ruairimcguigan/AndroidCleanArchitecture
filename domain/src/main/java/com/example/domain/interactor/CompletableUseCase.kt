@@ -9,26 +9,26 @@ import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-abstract class CompletableUseCase<T, in Params> constructor(
+abstract class CompletableUseCase<in Params> constructor(
     private val postExecutionThread: PostExecutionThread) {
 
     private val disposables = CompositeDisposable()
 
     protected abstract fun buildUseCaseCompletable(params: Params? = null): Completable
 
-    open fun execute(observer: DisposableCompletableObserver, params: Params?= null) {
+    open fun execute(observer: DisposableCompletableObserver, params: Params? = null) {
         val completable = this.buildUseCaseCompletable(params)
             .subscribeOn(Schedulers.io())
             .observeOn(postExecutionThread.scheduler)
         addDisposable(completable.subscribeWith(observer))
     }
 
-    private fun addDisposable(disposable: Disposable) {
+    fun addDisposable(disposable: Disposable) {
         disposables.add(disposable)
     }
 
-    fun dispose(){
-        disposables.dispose()
+    fun dispose() {
+        if (!disposables.isDisposed) disposables.dispose()
     }
 
 }
