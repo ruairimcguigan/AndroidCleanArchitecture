@@ -8,9 +8,13 @@ interface ProjectsDataStore {
 
     fun fetchProjects(): Observable<List<ProjectEntity>>
 
+    fun saveProjects(projects: List<ProjectEntity>): Completable
+
+    fun clearProjects(): Completable
+
     fun fetchBookmarkedProjects(): Observable<List<ProjectEntity>>
 
-    fun bookmarkProject(projectId: String): Completable
+    fun setProjectAsBookmarked(projectId: String): Completable
 
-    fun unBookmarkProject(projectId: String): Completable
+    fun setProjectAsNotBookmarked(projectId: String): Completable
 }
