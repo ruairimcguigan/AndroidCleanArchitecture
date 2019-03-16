@@ -4,7 +4,11 @@ import com.example.data.model.ProjectEntity
 import com.example.domain.model.Project
 import javax.inject.Inject
 
-class ProjectMapperImpl @Inject constructor() : EntityMapper<ProjectEntity, Project> {
+/**
+ * We use a mapper class to map our data from the data layer representation to the
+ * representation used in the domain layer
+ */
+class ProjectMapper @Inject constructor() : EntityMapper<ProjectEntity, Project> {
 
     override fun mapFromEntity(entity: ProjectEntity): Project {
         return Project(

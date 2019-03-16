@@ -2,6 +2,7 @@ package factory
 
 import com.example.data.model.ProjectEntity
 import com.example.domain.model.Project
+import kotlin.test.assertEquals
 
 object TestProjectFactory {
 
@@ -29,5 +30,17 @@ object TestProjectFactory {
             TestDataFactory.randomUuid(),
             TestDataFactory.randomBoolean()
         )
+    }
+
+    fun assertEqualData(entity: ProjectEntity, model: Project) {
+        assertEquals(entity.id, model.id)
+        assertEquals(entity.name, model.name)
+        assertEquals(entity.fullName, model.fullName)
+        assertEquals(entity.dateCreated, model.dateCreated)
+        assertEquals(entity.startCount, model.startCount)
+        assertEquals(entity.ownerAvatar, model.ownerAvatar)
+        assertEquals(entity.ownerName, model.ownerName)
+        assertEquals(entity.isBookmarked, model.isBookmarked)
+
     }
 }

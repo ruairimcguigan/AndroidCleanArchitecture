@@ -1,6 +1,6 @@
 package com.example.data
 
-import com.example.data.mapper.ProjectMapperImpl
+import com.example.data.mapper.ProjectMapper
 import com.example.data.repository.ProjectsCache
 import com.example.data.store.ProjectsDataStoreFactory
 import com.example.domain.model.Project
@@ -14,7 +14,7 @@ import javax.inject.Inject
  * Central access point for the data layer
  */
 class ProjectDataRepository @Inject constructor(
-    private val mapper: ProjectMapperImpl,
+    private val mapper: ProjectMapper,
     private val cache: ProjectsCache,
     private val factory: ProjectsDataStoreFactory
 
