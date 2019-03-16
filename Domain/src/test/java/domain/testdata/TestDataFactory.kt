@@ -2,10 +2,10 @@ package domain.testdata
 
 import com.example.domain.model.Project
 import com.example.domain.repository.ProjectRepository
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Completable
 import io.reactivex.Observable
+import org.mockito.ArgumentMatchers.any
 import java.util.*
 
 object TestDataFactory {
@@ -40,11 +40,11 @@ object TestDataFactory {
     }
 
      fun stubFetchProjects(observable: Observable<List<Project>>, projectRepository: ProjectRepository){
-        whenever(projectRepository.getProjects()).thenReturn(observable)
+        whenever(projectRepository.fetchProjects()).thenReturn(observable)
     }
 
     fun stubFetchBookmarkedProjects(observable: Observable<List<Project>>, projectRepository: ProjectRepository){
-        whenever(projectRepository.getbookmarkedProjects()).thenReturn(observable)
+        whenever(projectRepository.fetchBookmarkedProjects()).thenReturn(observable)
     }
 
     fun stubBookmarkedProject(completable: Completable, projectRepository: ProjectRepository){

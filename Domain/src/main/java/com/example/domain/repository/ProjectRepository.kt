@@ -16,11 +16,11 @@ import io.reactivex.Observable
  */
 interface ProjectRepository {
 
-    fun getProjects(): Observable<List<Project>>
+    fun fetchProjects(): Observable<List<Project>>
 
     fun bookmarkProject(projectId: String): Completable
 
     fun unbookmarkProject(projectId: String): Completable
 
-    fun getbookmarkedProjects(): Observable<List<Project>>
+    fun fetchBookmarkedProjects(): Observable<List<Project>>
 }

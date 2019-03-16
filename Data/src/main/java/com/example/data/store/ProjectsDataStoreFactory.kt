@@ -7,23 +7,23 @@ import javax.inject.Inject
  * Class that helps decide which repo should be used
  */
 open class ProjectsDataStoreFactory @Inject constructor(
-    private val projectsCacheDataStoreImpl: ProjectsCacheDataStoreImpl,
-    private val projectsRemoteDataStoreImpl: ProjectsRemoteDataStoreImpl
+    private val projectsCacheDataStore: ProjectsCacheDataStore,
+    private val projectsRemoteDataStore: ProjectsRemoteDataStore
 ) {
 
     open fun getDataStore(isProjectsCached: Boolean, hasCacheExpired: Boolean): ProjectsDataStore{
         return if (isProjectsCached && !hasCacheExpired){
-            projectsCacheDataStoreImpl
+            projectsCacheDataStore
         } else{
-            projectsRemoteDataStoreImpl
+            projectsRemoteDataStore
         }
     }
 
     open fun getCacheDataStore(): ProjectsDataStore {
-        return projectsCacheDataStoreImpl
+        return projectsCacheDataStore
     }
 
     open fun getRemoteDataStore(): ProjectsDataStore {
-        return projectsRemoteDataStoreImpl
+        return projectsRemoteDataStore
     }
 }

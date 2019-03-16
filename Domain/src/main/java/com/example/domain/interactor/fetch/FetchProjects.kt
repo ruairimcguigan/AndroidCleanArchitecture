@@ -12,7 +12,7 @@ open class FetchProjects @Inject constructor(
     : ObservableUseCase<List<Project>, Nothing?>(postExecutionThread) {
 
     public override fun buildUseCaseObservable(params: Nothing?): Observable<List<Project>> {
-        return projectRepository.getProjects()
+        return projectRepository.fetchProjects()
     }
 
 }

@@ -8,7 +8,7 @@ import io.reactivex.Observable
 import java.lang.UnsupportedOperationException
 import javax.inject.Inject
 
-class ProjectsRemoteDataStoreImpl @Inject constructor(private val projectsRemote: ProjectsRemote) : ProjectsDataStore {
+class ProjectsRemoteDataStore @Inject constructor(private val projectsRemote: ProjectsRemote) : ProjectsDataStore {
     override fun fetchProjects(): Observable<List<ProjectEntity>> {
         return projectsRemote.fetchProjects()
     }
