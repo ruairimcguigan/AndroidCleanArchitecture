@@ -5,7 +5,7 @@ import com.example.domain.model.Project
 import javax.inject.Inject
 
 /**
- * We use a mapper class to map our data from the data layer representation to the
+ * We use a com.example.data.mapper class to map our data from the data layer representation to the
  * representation used in the domain layer
  */
 class ProjectMapper @Inject constructor() : EntityMapper<ProjectEntity, Project> {

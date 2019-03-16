@@ -1,8 +1,5 @@
-package store
+package com.example.data.store
 
-import com.example.data.store.ProjectsCacheDataStore
-import com.example.data.store.ProjectsDataStoreFactory
-import com.example.data.store.ProjectsRemoteDataStore
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

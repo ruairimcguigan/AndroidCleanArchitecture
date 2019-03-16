@@ -11,7 +11,9 @@ import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
 /**
- * Central access point for the data layer
+ * Central access point for the data layer. The projects data repository
+ * is used to orchestrate the flow of data between the domain module and
+ * the remote / cache modules.
  */
 class ProjectDataRepository @Inject constructor(
     private val mapper: ProjectMapper,

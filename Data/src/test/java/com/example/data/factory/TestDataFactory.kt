@@ -1,4 +1,4 @@
-package factory
+package com.example.data.factory
 
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom

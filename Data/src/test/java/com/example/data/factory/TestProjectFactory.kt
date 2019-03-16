@@ -1,4 +1,4 @@
-package factory
+package com.example.data.factory
 
 import com.example.data.model.ProjectEntity
 import com.example.domain.model.Project

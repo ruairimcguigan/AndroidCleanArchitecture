@@ -1,9 +1,8 @@
-package mapper
+package com.example.data.mapper
 
-import com.example.data.mapper.ProjectMapper
-import factory.TestProjectFactory.assertEqualData
-import factory.TestProjectFactory.makeProject
-import factory.TestProjectFactory.makeProjectEntity
+import com.example.data.factory.TestProjectFactory.assertEqualData
+import com.example.data.factory.TestProjectFactory.makeProject
+import com.example.data.factory.TestProjectFactory.makeProjectEntity
 import org.junit.Test
 
 class ProjectMapperTest {
