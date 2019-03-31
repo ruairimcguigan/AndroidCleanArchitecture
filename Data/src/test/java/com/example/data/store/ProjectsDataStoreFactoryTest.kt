@@ -4,6 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import org.mockito.MockitoAnnotations.*
 import kotlin.test.assertEquals
 
 class ProjectsDataStoreFactoryTest {
@@ -15,7 +16,7 @@ class ProjectsDataStoreFactoryTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        initMocks(this)
         factory = ProjectsDataStoreFactory(cacheDataStore, remoteDataStore)
     }
 
