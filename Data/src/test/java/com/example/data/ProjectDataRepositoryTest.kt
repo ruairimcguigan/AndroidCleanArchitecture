@@ -1,8 +1,6 @@
 package com.example.data
 
-import com.example.data.factory.TestDataFactory
 import com.example.data.factory.TestDataFactory.randomUuid
-import com.example.data.factory.TestProjectFactory
 import com.example.data.factory.TestProjectFactory.makeProject
 import com.example.data.factory.TestProjectFactory.makeProjectEntity
 import com.example.data.mapper.ProjectMapper

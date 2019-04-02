@@ -37,7 +37,7 @@ object TestProjectFactory {
         assertEquals(entity.name, model.name)
         assertEquals(entity.fullName, model.fullName)
         assertEquals(entity.dateCreated, model.dateCreated)
-        assertEquals(entity.startCount, model.startCount)
+        assertEquals(entity.starCount, model.startCount)
         assertEquals(entity.ownerAvatar, model.ownerAvatar)
         assertEquals(entity.ownerName, model.ownerName)
         assertEquals(entity.isBookmarked, model.isBookmarked)
