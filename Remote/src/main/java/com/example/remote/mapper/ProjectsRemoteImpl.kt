@@ -8,8 +8,7 @@ import javax.inject.Inject
 
 class ProjectsRemoteImpl @Inject constructor(
     private val service: GithubTrendingApi,
-    private val mapper: ProjectsResponseModelMapper
-): ProjectsRemote {
+    private val mapper: ProjectsResponseModelMapper): ProjectsRemote {
 
     override fun fetchProjects(): Observable<List<ProjectEntity>> {
         return service.searchRepositories("language:kotlin", "stars", "desc")

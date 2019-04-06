@@ -5,15 +5,15 @@ import com.example.remote.model.ProjectModel
 
 class ProjectsResponseModelMapper : ModelMapper<ProjectModel, ProjectEntity> {
 
-    override fun mapFromModel(model: ProjectModel): ProjectEntity {
+    override fun mapFromModel(projectModel: ProjectModel): ProjectEntity {
         return ProjectEntity(
-            model.id,
-            model.name,
-            model.fullName,
-            model.starCount.toString(),
-            model.dateCreated,
-            model.owner.ownerName,
-            model.owner.ownerAvatar,
+            projectModel.id,
+            projectModel.name,
+            projectModel.fullName,
+            projectModel.starCount.toString(),
+            projectModel.dateCreated,
+            projectModel.owner.ownerName,
+            projectModel.owner.ownerAvatar,
             false
         )
     }
