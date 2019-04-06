@@ -2,6 +2,7 @@ package com.example.cache.db
 
 object ProjectConstants {
 
+    // db config
     const val DB_NAME = "projects.db"
     const val TABLE_NAME = "projects"
     const val COLUMN_PROJECT_ID = "project_id"
