@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.cache.db.ProjectConstants.DB_NAME
-import com.example.cache.model.CachedProjects
+import com.example.cache.model.CachedProject
 import javax.inject.Inject
 
-@Database(entities = arrayOf(CachedProjects::class), version = 1)
+@Database(entities = arrayOf(CachedProject::class), version = 1)
 abstract class ProjectsDb @Inject constructor() : RoomDatabase() {
 
     private var DB_INSTANCE: ProjectsDb? = null
