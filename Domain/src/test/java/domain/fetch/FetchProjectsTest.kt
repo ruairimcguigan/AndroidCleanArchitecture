@@ -1,10 +1,8 @@
-package domain.interactor.fetch
+package domain.fetch
 
 import com.example.domain.executor.PostExecutionThread
 import com.example.domain.interactor.fetch.FetchProjects
-import com.example.domain.model.Project
 import com.example.domain.repository.ProjectRepository
-import com.nhaarman.mockitokotlin2.whenever
 import domain.testdata.TestDataFactory
 import domain.testdata.TestDataFactory.stubFetchProjects
 import io.reactivex.Observable

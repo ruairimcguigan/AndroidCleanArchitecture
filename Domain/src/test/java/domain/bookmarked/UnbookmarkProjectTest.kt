@@ -1,4 +1,4 @@
-package domain.interactor.bookmarked
+package domain.bookmarked
 
 import com.example.domain.executor.PostExecutionThread
 import com.example.domain.interactor.bookmarked.UnbookmarkProject
@@ -33,7 +33,7 @@ class UnbookmarkProjectTest {
 
         // when
         val testObserver = unbookmarkProject.buildUseCaseCompletable(
-            UnbookmarkProject.Params.forProject(TestDataFactory.randomUuid())).test()
+            UnbookmarkProject.Params.forProject("id")).test()
 
         // then
         testObserver.assertComplete()

@@ -1,4 +1,4 @@
-package domain.interactor.bookmarked
+package domain.bookmarked
 
 import com.example.domain.executor.PostExecutionThread
 import com.example.domain.interactor.bookmarked.BookmarkProject
@@ -31,7 +31,7 @@ class BookmarkProjectTest {
 
         // when
         val testObserver = bookmarkProject.buildUseCaseCompletable(
-            BookmarkProject.Params.forProject(TestDataFactory.randomUuid())).test()
+            BookmarkProject.Params.forProject("id")).test()
 
         // then
         testObserver.assertComplete()
