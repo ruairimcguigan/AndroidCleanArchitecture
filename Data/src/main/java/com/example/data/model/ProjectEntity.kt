@@ -7,5 +7,6 @@ class ProjectEntity(
     val starCount: String,
     val dateCreated: String,
     val ownerName: String,
-    val ownerAvatar: String
+    val ownerAvatar: String,
+    val isBookmarked: Boolean
 )
