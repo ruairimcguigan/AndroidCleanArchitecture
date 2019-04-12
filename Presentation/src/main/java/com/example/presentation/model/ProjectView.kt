@@ -1,11 +1,13 @@
-package com.example.domain.model
+package com.example.presentation.model
 
-data class Project(
+class ProjectView(
     val id: String,
     val name: String,
     val fullName: String,
-    val starCount: String,
+    val startCount: String,
     val dateCreated: String,
     val ownerName: String,
     val ownerAvatar: String,
-    val isBookmarked: Boolean)
+    val isBookmarked: Boolean
+) {
+}

@@ -28,7 +28,7 @@ class ProjectMapper @Inject constructor() : EntityMapper<ProjectEntity, Project>
             domain.id,
             domain.name,
             domain.fullName,
-            domain.startCount,
+            domain.starCount,
             domain.dateCreated,
             domain.ownerName,
             domain.ownerAvatar,
