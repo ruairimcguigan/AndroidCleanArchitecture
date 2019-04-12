@@ -3,8 +3,10 @@ package com.example.cache.dao
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import com.example.cache.db.ProjectsDb
+import com.example.cache.factory.TestProjectFactory
 import com.example.cache.factory.TestProjectFactory.makeBookmarkedCachedProject
 import com.example.cache.factory.TestProjectFactory.makeCachedProject
+import com.example.cache.model.CachedProject
 import org.junit.After
 import org.junit.Ignore
 import org.junit.Rule
