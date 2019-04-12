@@ -4,6 +4,7 @@ import com.example.cache.model.CachedProject
 import com.example.data.model.ProjectEntity
 
 class CachedProjectMapper: CacheMapper<CachedProject, ProjectEntity> {
+
     override fun mapFromCached(type: CachedProject): ProjectEntity {
         return ProjectEntity(
             type.id,

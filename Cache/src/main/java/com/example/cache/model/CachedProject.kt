@@ -21,5 +21,5 @@ class CachedProject(
     val ownerAvatar: String,
 
     @ColumnInfo(name = COLUMN_IS_BOOKMARKED)
-    val isBookmarked: Boolean
+    var isBookmarked: Boolean
 )
