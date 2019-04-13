@@ -27,16 +27,21 @@ class BrowseBookmarkedProjectsViewModel @Inject constructor(
         return fetchBookmarkedProjects.execute(BookmarkedProjectsSubscriber())
     }
 
-    inner class BookmarkedProjectsSubscriber: DisposableObserver<List<Project>>() {
+    inner class BookmarkedProjectsSubscriber : DisposableObserver<List<Project>>() {
         override fun onNext(t: List<Project>) {
-            browseBookmarkedProjectsLiveData.postValue(
+            browseBookmarkedProjectsLiveData.value =
                 Resource(SUCCESS,
-                    t.map { mapper.mapToView(it) }, null))
+                    t.map { mapper.mapToView(it) }, null
+                )
         }
 
         override fun onError(e: Throwable) {
-            browseBookmarkedProjectsLiveData.postValue(Resource(ERROR, null,
-                e.localizedMessage))
+            browseBookmarkedProjectsLiveData.value = (
+                    Resource(
+                        ERROR,
+                        null,
+                        e.localizedMessage
+                    ))
         }
 
         override fun onComplete() { }
