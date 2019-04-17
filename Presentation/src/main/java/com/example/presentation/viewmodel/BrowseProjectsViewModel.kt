@@ -1,6 +1,5 @@
 package com.example.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.interactor.bookmarked.BookmarkProject
@@ -19,20 +18,15 @@ class BrowseProjectsViewModel @Inject constructor(
     private val fetchProjects: FetchProjects?,
     private val bookmarkProject: BookmarkProject,
     private val unbookmarkProject: UnbookmarkProject,
-    private val mapper: ProjectViewMapper
-) : ViewModel() {
+    private val mapper: ProjectViewMapper) : ViewModel() {
 
     private val projectsLiveData: MutableLiveData<Resource<List<ProjectView>>> = MutableLiveData()
 
-    init {
-        fetchProjects()
-    }
-
-    fun getProjectsLiveData(): LiveData<Resource<List<ProjectView>>> {
+    fun getProjectsLiveData(): MutableLiveData<Resource<List<ProjectView>>> {
         return projectsLiveData
     }
 
-    private fun fetchProjects() {
+    fun fetchProjects() {
         projectsLiveData.postValue(Resource(ResourceState.LOADING, null, null))
         fetchProjects?.execute(ProjectsSubscriber())
     }

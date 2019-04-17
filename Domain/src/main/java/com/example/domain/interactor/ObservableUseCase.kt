@@ -18,6 +18,7 @@ abstract class ObservableUseCase<T, in Params> constructor(
         val observable = this.buildUseCaseObservable(params)
             .subscribeOn(Schedulers.io())
             .observeOn(postExecutionThread.scheduler)
+
         addDisposable(observable.subscribeWith(observer))
     }
 

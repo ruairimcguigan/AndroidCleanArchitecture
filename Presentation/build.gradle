@@ -74,4 +74,7 @@ dependencies {
     testImplementation presentationTestDependencies.assertj
     testImplementation presentationTestDependencies.robolectric
     testImplementation presentationTestDependencies.archTesting
+
+    testImplementation 'org.mockito4kotlin:annotation:0.3.0'
+
 }
