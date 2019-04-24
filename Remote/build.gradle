@@ -18,7 +18,7 @@ dependencies {
     implementation remoteDependencies.retrofitAdapter
 
     implementation remoteTestDependencies.junit
-    implementation remoteTestDependencies.kotlinJUnit
+    implementation "org.jetbrains.kotlin:kotlin-test-junit:1.3.30"
     implementation remoteTestDependencies.mockito
     implementation remoteTestDependencies.assertj
 }
