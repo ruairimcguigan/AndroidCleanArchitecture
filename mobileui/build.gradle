@@ -22,6 +22,9 @@ android {
         }
     }
 
+    kapt {
+        generateStubs = true
+    }
 }
 
 dependencies {
@@ -34,6 +37,7 @@ dependencies {
     implementation project(':Remote')
     implementation project(':Cache')
 
+    // libs
     implementation mobileUiDependencies.kotlin
     implementation mobileUiDependencies.constraintLayout
     implementation mobileUiDependencies.javaxAnnotation
@@ -45,21 +49,24 @@ dependencies {
     implementation mobileUiDependencies.materialDesign
     implementation mobileUiDependencies.timber
     implementation mobileUiDependencies.glide
+    compileOnly mobileUiDependencies.glassfishAnnotation
+
+    // dep injection
     implementation mobileUiDependencies.dagger
     implementation mobileUiDependencies.daggerSupport
+    kapt mobileUiDependencies.daggerCompiler
+
+    // db
     implementation mobileUiDependencies.roomRuntime
     annotationProcessor mobileUiDependencies.roomCompiler
     implementation mobileUiDependencies.roomRxJava
+
+    // arch components
     implementation mobileUiDependencies.archRuntime
     implementation mobileUiDependencies.archExtensions
     annotationProcessor mobileUiDependencies.archCompiler
-    compileOnly mobileUiDependencies.glassfishAnnotation
 
-    //    implementation mobileUiDependencies.androidSupportV4
-    //    implementation mobileUiDependencies.androidSupportV13
-    //    implementation mobileUiDependencies.supportDesign
-
-
+    // test libs
     testImplementation mobileUiTestDependencies.kotlinJUnit
     androidTestImplementation mobileUiTestDependencies.junit
     androidTestImplementation mobileUiTestDependencies.mockito

@@ -1,7 +1,8 @@
-package com.example.mobileui
+package com.example.mobileui.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mobileui.R
 import com.example.mobileui.ui.browseprojects.BrowseProjectsFragment
 
 class ProjectsActivity : AppCompatActivity() {
