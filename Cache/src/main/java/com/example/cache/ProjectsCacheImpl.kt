@@ -65,9 +65,9 @@ class ProjectsCacheImpl @Inject constructor(
             .map { !it }
     }
 
-    override fun setLastCacheTime(lastCached: Long): Completable {
+    override fun setLastCacheTime(lastCacheTime: Long): Completable {
         return Completable.defer {
-            projectsDB.configDao().insertConfig(Config(lastCacheTime = lastCached))
+            projectsDB.configDao().insertConfig(Config(lastCacheTime = lastCacheTime))
             Completable.complete()
         }
     }
