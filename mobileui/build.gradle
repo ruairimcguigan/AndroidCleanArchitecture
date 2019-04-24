@@ -49,6 +49,7 @@ dependencies {
     implementation mobileUiDependencies.materialDesign
     implementation mobileUiDependencies.timber
     implementation mobileUiDependencies.glide
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     compileOnly mobileUiDependencies.glassfishAnnotation
 
     // dep injection
@@ -95,4 +96,5 @@ dependencies {
 
     kaptTest mobileUiDependencies.daggerCompiler
     kaptAndroidTest mobileUiDependencies.daggerCompiler
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
