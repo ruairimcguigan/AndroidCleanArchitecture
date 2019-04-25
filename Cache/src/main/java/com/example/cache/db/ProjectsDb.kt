@@ -11,23 +11,30 @@ import com.example.cache.model.CachedProject
 import com.example.cache.model.Config
 import javax.inject.Inject
 
-@Database(entities = arrayOf(CachedProject::class, Config::class), version = 1)
+@Database(entities = [
+    CachedProject::class,
+    Config::class],
+    version = 1)
 abstract class ProjectsDb @Inject constructor() : RoomDatabase() {
 
-    private var DB_INSTANCE: ProjectsDb? = null
-    private var lock = Any()
+    companion object {
 
-    fun getDbInstance(context: Context): ProjectsDb {
-        if (DB_INSTANCE == null) {
-            synchronized(lock) {
-                DB_INSTANCE = Room.databaseBuilder(
+        private var DB_INSTANCE: ProjectsDb? = null
+        private var lock = Any()
+
+        fun instance(context: Context): ProjectsDb {
+            if (DB_INSTANCE == null) {
+                synchronized(lock) {
+                    DB_INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        ProjectsDb::class.java, DB_NAME)
+                        ProjectsDb::class.java, DB_NAME
+                    )
                         .build()
+                }
+                return DB_INSTANCE as ProjectsDb
             }
             return DB_INSTANCE as ProjectsDb
         }
-        return DB_INSTANCE as ProjectsDb
     }
 
     abstract fun cachedProjectsDao(): CachedProjectsDao

@@ -1,4 +1,4 @@
-package com.example.mobileui.ui
+package com.example.mobileui
 
 import com.example.domain.executor.PostExecutionThread
 import io.reactivex.Scheduler

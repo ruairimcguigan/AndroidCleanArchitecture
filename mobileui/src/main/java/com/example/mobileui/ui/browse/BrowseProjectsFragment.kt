@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileui.R
+import kotlinx.android.synthetic.main.project_list.*
 
 class BrowseProjectsFragment : Fragment() {
 
@@ -23,6 +25,16 @@ class BrowseProjectsFragment : Fragment() {
         val view = ConstraintLayout(activity)
         inflater.inflate(R.layout.project_list, view, true)
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initProjectList()
+    }
+
+    private fun initProjectList() {
+        projectsList.layoutManager = LinearLayoutManager(activity)
     }
 
     fun bookmarkProject(projectId: String) {

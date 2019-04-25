@@ -56,6 +56,7 @@ dependencies {
     implementation mobileUiDependencies.dagger
     implementation mobileUiDependencies.daggerSupport
     kapt mobileUiDependencies.daggerCompiler
+    kapt mobileUiDependencies.daggerProcessor
 
     // db
     implementation mobileUiDependencies.roomRuntime

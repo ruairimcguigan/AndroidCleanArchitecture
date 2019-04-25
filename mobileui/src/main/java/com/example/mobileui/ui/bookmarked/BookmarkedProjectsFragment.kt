@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileui.R
+import kotlinx.android.synthetic.main.project_list.*
 
 class BookmarkedProjectsFragment : Fragment() {
     private var listener: BookmarkListener? = null
@@ -29,6 +31,15 @@ class BookmarkedProjectsFragment : Fragment() {
         } else {
             throw RuntimeException("$context must implement BookmarkListener")
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initProjectList()
+    }
+
+    private fun initProjectList() {
+        projectsList.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun onDetach() {
