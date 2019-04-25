@@ -1,5 +1,7 @@
 package com.example.mobileui.model
 
+import com.example.mobileui.ui.Item
+
 class Project(
     val id: String,
     val name: String,
@@ -9,4 +11,4 @@ class Project(
     val ownerName: String,
     val ownerAvatar: String,
     val isBookmarked: Boolean
-)
+): Item
