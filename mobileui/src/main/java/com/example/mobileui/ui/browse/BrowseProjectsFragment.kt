@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileui.R
+import com.example.mobileui.model.Project
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.project_list.*
 
 class BrowseProjectsFragment : Fragment() {
 
+//    @Inject private lateinit var viewModelFactory: ViewModelFactory
+//    @Inject private lateinit var viewmodel: BrowseProjectsViewModel
+//    @Inject lateinit var mapper: ProjectViewMapper
+
+    private lateinit var adapter: BrowseAdapter
     private var listener: BrowseListener? = null
 
     companion object {
@@ -23,25 +29,86 @@ class BrowseProjectsFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val view = ConstraintLayout(activity)
-        inflater.inflate(R.layout.project_list, view, true)
-        return view
+        return inflater.inflate(R.layout.project_list, view, true)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+//        attachViewModel()
+//        initProjectList()
+//    }
 
-        initProjectList()
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        fetchProjects()
+//    }
 
-    private fun initProjectList() {
-        projectsList.layoutManager = LinearLayoutManager(activity)
+//    private fun attachViewModel() {
+//        viewmodel = ViewModelProviders.of(
+//            this,
+//            viewModelFactory)
+//            .get(BrowseProjectsViewModel::class.java)
+//    }
+
+//    private fun initProjectList() {
+//        adapter = BrowseAdapter()
+//        adapter.projectListener = projectListener
+//        projectsList.layoutManager = LinearLayoutManager(activity)
+//    }
+
+//    private fun fetchProjects() {
+//        viewmodel.getProjectsLiveData().observe(this,
+//            Observer<Resource<List<ProjectView>>> {
+//                it?.let {
+//                    handleDataState(it)
+//                }
+//            })
+//        viewmodel.fetchProjects()
+//    }
+
+//    private fun handleDataState(resource: Resource<List<ProjectView>>) {
+//        when (resource.status) {
+//            ResourceState.SUCCESS -> {
+//                onSuccess(resource.data?.map {
+//                    mapper.mapToView(it)
+//                })
+//            }
+//            ResourceState.LOADING -> {
+//                progress.visibility = View.VISIBLE
+//                projectsList.visibility = View.GONE
+//            }
+//            else -> Timber.d("No projects received")
+//        }
+//    }
+
+    private fun onSuccess(projects: List<Project>?) {
+        progress.visibility = View.GONE
+        projects?.let {
+            adapter.data = it as MutableList<Project>
+            adapter.notifyDataSetChanged()
+            projectsList.visibility = View.VISIBLE
+        } ?: run {
+
+        }
     }
 
     fun bookmarkProject(projectId: String) {
         listener?.onBrowseInteraction(projectId)
     }
 
+//    private val projectListener = object : ProjectListener {
+//        override fun onProjectBookmarkClicked(projectId: String) {
+//            viewmodel.unbookmarkProject(projectId)
+//        }
+//
+//        override fun onProjectSelected(projectId: String) {
+//            viewmodel.bookmarkProject(projectId)
+//        }
+//    }
+
     override fun onAttach(context: Context) {
+//        AndroidSupportInjection.inject(this)
         super.onAttach(context)
         if (context is BrowseListener) {
             listener = context

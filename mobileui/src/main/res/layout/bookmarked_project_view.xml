@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+    <ImageView
+            android:id="@+id/ownerAvatarView"
+            android:layout_width="@dimen/project_view_avatar_dimen"
+            android:layout_height="@dimen/project_view_avatar_dimen"
+            android:layout_marginBottom="@dimen/grid_8"
+            android:layout_marginStart="@dimen/grid_16"
+            android:layout_marginTop="@dimen/grid_8"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"/>
+
+    <TextView
+            android:id="@+id/ownerNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/grid_8"
+            android:layout_marginStart="@dimen/grid_16"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ownerAvatarView"
+            app:layout_constraintTop_toTopOf="@+id/ownerAvatarView"
+            tools:text="Ruairi McGuigan" />
+
+    <TextView
+            android:id="@+id/projectNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/grid_8"
+            android:layout_marginStart="@dimen/grid_16"
+            android:layout_marginTop="@dimen/grid_16"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ownerAvatarView"
+            app:layout_constraintTop_toBottomOf="@+id/ownerNameView"
+            tools:text="Great project" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

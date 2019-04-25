@@ -1,4 +1,4 @@
-package com.example.mobileui.ui.browse
+package com.example.mobileui.ui.bookmarked
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,21 +6,22 @@ import android.view.ViewGroup
 import com.example.mobileui.R
 import com.example.mobileui.model.Project
 import com.example.mobileui.ui.BaseAdapter
+import com.example.mobileui.ui.browse.ProjectListener
 import javax.inject.Inject
 
-class BrowseAdapter @Inject constructor() : BaseAdapter<Project, BrowseProjectViewHolder>() {
+class BookmarkedAdapter @Inject constructor() : BaseAdapter<Project, BookmarkedProjectViewHolder>() {
 
-    lateinit var context: Context
-    lateinit var projectListener: ProjectListener
+    private lateinit var context: Context
+    private lateinit var projectListener: ProjectListener
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrowseProjectViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkedProjectViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.project_view, parent, false)
         context = parent.context;
-        return BrowseProjectViewHolder(view)
+        return BookmarkedProjectViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BrowseProjectViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookmarkedProjectViewHolder, position: Int) {
         val project = data.get(position)
         holder.populate(context, project)
         holder.itemView.setOnClickListener {
