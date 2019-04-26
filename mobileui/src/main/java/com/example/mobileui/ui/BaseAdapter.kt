@@ -5,25 +5,24 @@ import java.util.ArrayList
 
 abstract class BaseAdapter<I : Item, V : RecyclerView.ViewHolder> protected constructor() : RecyclerView.Adapter<V>() {
 
-    internal var data: MutableList<I>
+    internal var data: List<I>
 
     private var listener: Listener<I>? = null
-
-    override fun getItemCount(): Int = data.size
 
     init {
         data = ArrayList()
     }
 
-    fun setData(data: MutableList<I>) {
+    fun setData(data: List<I>) {
         this.data = data
-
         notifyDataSetChanged()
     }
 
     fun getData(): List<I>? {
         return data
     }
+
+    override fun getItemCount(): Int = data.size
 
     fun setOnItemClickedListener(onItemClickedListener: Listener<I>) {
         this.listener = onItemClickedListener
@@ -42,9 +41,9 @@ abstract class BaseAdapter<I : Item, V : RecyclerView.ViewHolder> protected cons
         return data[position]
     }
 
-    protected fun clearData() {
-        data.clear()
-    }
+//    protected fun clearData() {
+//        data.
+//    }
 
     interface Listener<I> {
         fun onItemClicked(item: I)

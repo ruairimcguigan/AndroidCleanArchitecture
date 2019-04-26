@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bookmarked_projects">Bookmarked projects</string>
+    <string name="view_projects_title">View projects</string>
+    <string name="view_bookmarked_projects_title">View bookmarked projects</string>
 </resources>

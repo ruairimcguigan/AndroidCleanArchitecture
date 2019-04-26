@@ -14,7 +14,8 @@ import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
-class BrowseProjectsViewModel @Inject constructor(
+class BrowseProjectsViewModel
+@Inject constructor(
     private val fetchProjects: FetchProjects?,
     private val bookmarkProject: BookmarkProject,
     private val unbookmarkProject: UnbookmarkProject,
@@ -27,7 +28,12 @@ class BrowseProjectsViewModel @Inject constructor(
     }
 
     fun fetchProjects() {
-        projectsLiveData.postValue(Resource(ResourceState.LOADING, null, null))
+        projectsLiveData.postValue(
+            Resource(
+                ResourceState.LOADING,
+                null,
+                null)
+        )
         fetchProjects?.execute(ProjectsSubscriber())
     }
 
@@ -47,31 +53,38 @@ class BrowseProjectsViewModel @Inject constructor(
 
     inner class ProjectsSubscriber : DisposableObserver<List<Project>>() {
         override fun onNext(t: List<Project>) {
-            projectsLiveData.postValue(Resource(ResourceState.SUCCESS,
-                t.map { mapper.mapToView(it) }, null
-            )
+            projectsLiveData.postValue(
+                Resource(
+                    ResourceState.SUCCESS,
+                    t.map { mapper.mapToView(it) },
+                    null)
             )
         }
 
         override fun onComplete() {}
 
         override fun onError(e: Throwable) {
-            projectsLiveData.postValue(Resource(ResourceState.ERROR, null, e.localizedMessage))
+            projectsLiveData.postValue(
+                Resource(
+                    ResourceState.ERROR,
+                    null,
+                    e.localizedMessage)
+            )
         }
-
     }
 
     inner class BookmarkProjectsSubscriber : DisposableCompletableObserver() {
         override fun onComplete() {
-            projectsLiveData.postValue(Resource(ResourceState.SUCCESS, projectsLiveData.value?.data, null))
-        }
-
-        override fun onError(e: Throwable) {
             projectsLiveData.postValue(
                 Resource(
-                    ResourceState.ERROR, projectsLiveData.value?.data,
-                    e.localizedMessage
-                )
+                    ResourceState.SUCCESS,
+                    projectsLiveData.value?.data,
+                    null)
+            )
+        }
+        override fun onError(e: Throwable) {
+            projectsLiveData.postValue(
+                Resource(ResourceState.ERROR, projectsLiveData.value?.data, e.localizedMessage)
             )
         }
     }

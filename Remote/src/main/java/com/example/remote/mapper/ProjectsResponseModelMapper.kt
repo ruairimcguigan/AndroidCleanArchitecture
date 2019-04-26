@@ -2,8 +2,9 @@ package com.example.remote.mapper
 
 import com.example.data.model.ProjectEntity
 import com.example.remote.model.ProjectModel
+import javax.inject.Inject
 
-class ProjectsResponseModelMapper : ModelMapper<ProjectModel, ProjectEntity> {
+class ProjectsResponseModelMapper @Inject constructor() : ModelMapper<ProjectModel, ProjectEntity> {
 
     override fun mapFromModel(projectModel: ProjectModel): ProjectEntity {
         return ProjectEntity(

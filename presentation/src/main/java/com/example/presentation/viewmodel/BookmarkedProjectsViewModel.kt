@@ -12,7 +12,7 @@ import com.example.presentation.state.ResourceState.*
 import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
-class BrowseBookmarkedProjectsViewModel @Inject constructor(
+class BookmarkedProjectsViewModel @Inject constructor(
     private val fetchBookmarkedProjects: FetchBookmarkedProjects,
     private val mapper: ProjectViewMapper) : ViewModel() {
 

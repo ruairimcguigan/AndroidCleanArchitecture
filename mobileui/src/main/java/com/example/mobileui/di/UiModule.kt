@@ -13,6 +13,6 @@ abstract class UiModule {
     @Binds
     abstract fun bindPostExecutionThread(uiThread: UiThread): PostExecutionThread
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
     abstract fun contributesBrowseActivity(): ProjectsActivity
 }

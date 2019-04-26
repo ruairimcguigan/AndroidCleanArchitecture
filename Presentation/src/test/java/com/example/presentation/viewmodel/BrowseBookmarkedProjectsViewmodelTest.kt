@@ -23,7 +23,7 @@ class BrowseBookmarkedProjectsViewmodelTest {
     var bookmarkedProjects = mock<FetchBookmarkedProjects>()
     var mapper = mock<ProjectViewMapper>()
 
-    private var viewModel = BrowseBookmarkedProjectsViewModel(bookmarkedProjects, mapper)
+    private var viewModel = BookmarkedProjectsViewModel(bookmarkedProjects, mapper)
 
     @Captor val captor = argumentCaptor<DisposableObserver<List<Project>>>()
 

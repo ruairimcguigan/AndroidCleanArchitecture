@@ -18,7 +18,7 @@ object GithubTrendingApiFactory {
 
     private fun makeGithubTrendingService(okHttpClient: OkHttpClient, gson: Gson): GithubTrendingApi {
         val retrofit = Retrofit.Builder()
-//            .baseUrl("https://api.github.com/")
+            .baseUrl("https://api.github.com/")
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))

@@ -30,7 +30,7 @@ class ProjectsCacheImpl @Inject constructor(
     }
 
     override fun fetchProjects(): Observable<List<ProjectEntity>> {
-        return projectsDB.cachedProjectsDao().getBookmarkedProjects()
+        return projectsDB.cachedProjectsDao().fetchProjects()
             .map {
                 it.map { mapper.mapFromCached(it) }
             }
@@ -76,7 +76,8 @@ class ProjectsCacheImpl @Inject constructor(
         val currentTime = System.currentTimeMillis()
         val expirationTime = (60 * 10 * 1000).toLong()
         return projectsDB.configDao().getConfig()
-            .single(Config(lastCacheTime = 0))
+            .onErrorReturn { Config(lastCacheTime = 0) }
+            .toSingle(Config(lastCacheTime = 0))
             .map {
                 currentTime - it.lastCacheTime > expirationTime
             }

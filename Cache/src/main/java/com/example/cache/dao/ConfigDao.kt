@@ -6,13 +6,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.cache.db.ConfigConstants
 import com.example.cache.model.Config
+import io.reactivex.Maybe
 import io.reactivex.Observable
 
 @Dao
 abstract class ConfigDao {
 
     @Query(ConfigConstants.QUERY_CONFIG)
-    abstract fun getConfig(): Observable<Config>
+    abstract fun getConfig(): Maybe<Config>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertConfig(config: Config)

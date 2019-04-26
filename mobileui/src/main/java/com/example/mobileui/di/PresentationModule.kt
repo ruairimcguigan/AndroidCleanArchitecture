@@ -2,36 +2,30 @@ package com.example.mobileui.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mobileui.vm.ViewModelFactory
-import com.example.presentation.viewmodel.BrowseBookmarkedProjectsViewModel
+import com.example.presentation.viewmodel.BookmarkedProjectsViewModel
 import com.example.presentation.viewmodel.BrowseProjectsViewModel
+import com.example.presentation.viewmodel.ViewModelFactory
 import dagger.Binds
-import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
-import kotlin.reflect.KClass
 
 @Module
 abstract class PresentationModule {
 
     @Binds
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
     @IntoMap
     @ViewModelKey(BrowseProjectsViewModel::class)
-    abstract fun bindBrowseProjectsViewModel(viewModel: BrowseProjectsViewModel): ViewModel
+    abstract fun bindBrowseProjectsViewModel(
+        viewModel: BrowseProjectsViewModel
+    ): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(BrowseBookmarkedProjectsViewModel::class)
+    @ViewModelKey(BookmarkedProjectsViewModel::class)
     abstract fun bindBrowseBookmarkedProjectsViewModel(
-        viewModel: BrowseBookmarkedProjectsViewModel): ViewModel
-
-
-    @Binds
-    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+        viewModel: BookmarkedProjectsViewModel
+    ): ViewModel
 }
-
-@MustBeDocumented
-@Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.RUNTIME)
-@MapKey
-annotation class ViewModelKey(val value: KClass<out ViewModel>)

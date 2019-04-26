@@ -15,31 +15,29 @@ import javax.inject.Inject
  * is used to orchestrate the flow of data between the domain module and
  * the remote / cache modules.
  */
-class ProjectDataRepository @Inject constructor(
+class ProjectsDataRepository @Inject constructor(
     private val mapper: ProjectMapper,
     private val cache: ProjectsCache,
-    private val factory: ProjectsDataStoreFactory
-
-): ProjectRepository {
+    private val factory: ProjectsDataStoreFactory)
+    : ProjectRepository {
 
     override fun fetchProjects(): Observable<List<Project>> {
         return Observable.zip(
             cache.areProjectsCached().toObservable(),
             cache.isProjectsCacheExpired().toObservable(),
-
             BiFunction<Boolean, Boolean, Pair<Boolean, Boolean>> {
-                    areCached, isExpired -> Pair(areCached, isExpired)
+                    isCached, isExpired -> Pair(isCached, isExpired)
             })
             .flatMap {
                 factory.getDataStore(it.first, it.second).fetchProjects()
             }
-            .flatMap { projects ->
-                factory.getCacheDataStore()
-                    .saveProjects(projects)
-                    .andThen(Observable.just(projects))
+            .flatMap {
+                    projects -> factory.getCacheDataStore()
+                .saveProjects(projects)
+                .andThen(Observable.just(projects))
             }
-            .map {
-                it.map {
+            .map { projectEntity ->
+                projectEntity.map {
                     mapper.mapFromEntity(it)
                 }
             }
@@ -53,13 +51,10 @@ class ProjectDataRepository @Inject constructor(
         return factory.getCacheDataStore().setProjectAsNotBookmarked(projectId)
     }
 
-    // map the response of fetchBookmarkedProjects() to the domain layer representation model
     override fun fetchBookmarkedProjects(): Observable<List<Project>> {
         return factory.getCacheDataStore().fetchBookmarkedProjects()
             .map {
-                it.map {
-                    mapper.mapFromEntity(it)
-                }
+                it.map { projectEntity -> mapper.mapFromEntity(projectEntity) }
             }
     }
 }
