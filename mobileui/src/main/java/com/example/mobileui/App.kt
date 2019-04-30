@@ -3,7 +3,7 @@ package com.example.mobileui
 import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
-import com.example.mobileui.di.DaggerAppComponent
+import com.example.mobileui.inject.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

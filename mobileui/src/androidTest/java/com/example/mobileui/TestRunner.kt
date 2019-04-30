@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import androidx.test.runner.AndroidJUnitRunner
-import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -18,7 +18,8 @@ class TestRunner: AndroidJUnitRunner() {
          * When tests are run - we wnat RxJava streams to be completed immediately
          * .trampoline() scheduler provides for when anything is subscribed to, the result is returned immediately
          */
-        RxJavaPlugins.setInitIoSchedulerHandler { Schedulers.trampoline() }
+        RxAndroidPlugins.reset()
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
     }
 
     @Throws(InstantiationException::class, IllegalAccessException::class, ClassNotFoundException::class)

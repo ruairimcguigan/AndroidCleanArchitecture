@@ -3,7 +3,6 @@ package com.example.mobileui.inject
 import android.app.Application
 import com.example.domain.repository.ProjectRepository
 import com.example.mobileui.TestApp
-import com.example.mobileui.di.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -17,7 +16,8 @@ import javax.inject.Singleton
     TestDataModule::class,
     TestRemoteModule::class,
     PresentationModule::class,
-    UiModule::class
+    UiModule::class,
+    FragmentBuilderModule::class
 ])
 interface TestAppComponent {
 
