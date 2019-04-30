@@ -98,8 +98,9 @@ class BrowseProjectsFragment : Fragment() {
 
     private fun onSuccess(projects: List<Project>?) {
         progress.visibility = View.GONE
+
         projects?.let {
-            adapter.setData(it)
+            adapter.projects = it
             projectsList.visibility = View.VISIBLE
         } ?: run { }
     }
@@ -119,13 +120,14 @@ class BrowseProjectsFragment : Fragment() {
     }
 
     private val projectListener = object : ProjectListener {
-        override fun onProjectBookmarkClicked(projectId: String) {
+        override fun onBookmarkedProjectClicked(projectId: String) {
             adapter.projectListener
             viewmodel.unbookmarkProject(projectId)
         }
 
         override fun onProjectSelected(projectId: String) {
             viewmodel.bookmarkProject(projectId)
+            adapter.projectListener
         }
     }
 }

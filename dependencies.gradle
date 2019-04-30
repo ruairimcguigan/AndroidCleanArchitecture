@@ -32,6 +32,7 @@ ext {
     materialDesignVersion = '1.0.0'
     archComponents = '2.1.0-alpha04'
     jetpackKotlinVersion = '1.1.0-alpha05'
+    androidXLegacyVersion = "1.0.0"
 
     // Testing
     jUnitVersion = '4.13-beta-2'
@@ -161,6 +162,7 @@ ext {
             dagger:                 "com.google.dagger:dagger:${daggerVersion}",
             daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",
             daggerSupport:          "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerAndroid:          "com.google.dagger:dagger-android:${daggerVersion}",
             daggerProcessor:        "com.google.dagger:dagger-android-processor:${daggerVersion}",
             roomRuntime:            "androidx.room:room-runtime:${roomVersion}",
             roomCompiler:           "androidx.room:room-compiler:${roomVersion}",
@@ -171,6 +173,7 @@ ext {
             archViewmodel:          "androidx.lifecycle:lifecycle-viewmodel-ktx:${archComponents}",
             kotlinExt:              "androidx.core:core-ktx:${jetpackKotlinVersion}",
             glassfishAnnotation:    "org.glassfish:javax.annotation:${glassfishAnnotationVersion}",
+            androidXLegacy:         "androidx.legacy:legacy-support-v4:${androidXLegacyVersion}"
     ]
 
     mobileUiTestDependencies = [

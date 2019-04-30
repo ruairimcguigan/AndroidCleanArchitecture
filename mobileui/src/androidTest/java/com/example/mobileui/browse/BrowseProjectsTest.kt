@@ -31,7 +31,7 @@ class BrowseProjectsTest {
 
     @Test
     fun testActivityLaunches() {
-        stubProjectsRepositoryGetProjects(
+        stubProjectsRepo_FetchProjects(
             Observable.just(listOf(makeProject())))
 
         activity.launchActivity(null)
@@ -46,7 +46,7 @@ class BrowseProjectsTest {
             makeProject(),
             makeProject())
 
-        stubProjectsRepositoryGetProjects(Observable.just(projects))
+        stubProjectsRepo_FetchProjects(Observable.just(projects))
 
         // when
         activity.launchActivity(null)
@@ -61,7 +61,7 @@ class BrowseProjectsTest {
         }
     }
 
-    private fun stubProjectsRepositoryGetProjects(observable: Observable<List<Project>>) {
+    private fun stubProjectsRepo_FetchProjects(observable: Observable<List<Project>>) {
         whenever(TestApp.appComponent().projectsRepository().fetchProjects())
             .thenReturn(observable)
     }

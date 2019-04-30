@@ -96,8 +96,9 @@ class BookmarkedProjectsFragment : Fragment() {
 
     private fun onSuccess(projects: List<Project>?) {
         progress.visibility = View.GONE
+
         projects?.let {
-            adapter.setData(it)
+            adapter.projects = it
             projectsList.visibility = View.VISIBLE
         } ?: run { }
     }

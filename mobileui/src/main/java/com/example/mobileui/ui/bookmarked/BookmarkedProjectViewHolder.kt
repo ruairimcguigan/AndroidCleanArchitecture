@@ -7,9 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.mobileui.R
 import com.example.mobileui.model.Project
-import kotlinx.android.synthetic.main.project_view.view.*
+import kotlinx.android.synthetic.main.bookmarked_project_view.view.*
 
 class BookmarkedProjectViewHolder(view: View): RecyclerView.ViewHolder(view) {
 

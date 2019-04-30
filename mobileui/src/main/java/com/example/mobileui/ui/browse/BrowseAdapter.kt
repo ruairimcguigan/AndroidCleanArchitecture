@@ -3,16 +3,18 @@ package com.example.mobileui.ui.browse
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileui.R
 import com.example.mobileui.model.Project
-import com.example.mobileui.ui.BaseAdapter
 import javax.inject.Inject
 
 class BrowseAdapter
-@Inject constructor() : BaseAdapter<Project, BrowseProjectViewHolder>() {
+@Inject constructor() : RecyclerView.Adapter<BrowseProjectViewHolder>() {
 
-    lateinit var context: Context
+    private lateinit var context: Context
+
     var projectListener: ProjectListener? = null
+    var projects: List<Project> = arrayListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,16 +33,21 @@ class BrowseAdapter
     }
 
     override fun onBindViewHolder(holder: BrowseProjectViewHolder, position: Int) {
-        val project = data[position]
+        val project = projects[position]
         val id = project.id
 
         holder.populate(context, project)
+
         holder.itemView.setOnClickListener {
             if (project.isBookmarked) {
-                projectListener?.onProjectBookmarkClicked(id)
+                projectListener?.onBookmarkedProjectClicked(id)
             } else {
                 projectListener?.onProjectSelected(id)
             }
         }
+    }
+
+    override fun getItemCount(): Int {
+        return projects.count()
     }
 }

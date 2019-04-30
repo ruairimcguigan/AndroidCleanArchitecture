@@ -49,20 +49,15 @@ dependencies {
     implementation mobileUiDependencies.materialDesign
     implementation mobileUiDependencies.timber
     implementation mobileUiDependencies.glide
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation mobileUiDependencies.androidXLegacy
     compileOnly mobileUiDependencies.glassfishAnnotation
 
     // dep injection
-//    implementation mobileUiDependencies.dagger
-//    implementation mobileUiDependencies.daggerSupport
-//    kapt mobileUiDependencies.daggerCompiler
-//    kapt mobileUiDependencies.daggerProcessor
-
-    implementation "com.google.dagger:dagger:2.16"
-    kapt "com.google.dagger:dagger-compiler:2.16"
-    implementation "com.google.dagger:dagger-android:2.16"
-    implementation "com.google.dagger:dagger-android-support:2.16"
-    kapt "com.google.dagger:dagger-android-processor:2.16"
+    implementation mobileUiDependencies.dagger
+    kapt mobileUiDependencies.daggerCompiler
+    implementation mobileUiDependencies.daggerAndroid
+    implementation mobileUiDependencies.daggerSupport
+    kapt mobileUiDependencies.daggerProcessor
 
     // db
     implementation mobileUiDependencies.roomRuntime

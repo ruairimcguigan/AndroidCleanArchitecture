@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    compileSdkVersion 28
     buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
 
     defaultConfig {
